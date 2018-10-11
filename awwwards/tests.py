@@ -43,4 +43,6 @@ class ProjectTestClass(TestCase):
         projects = Project.objects.all()
         self.assertTrue(len(projects) == 0) 
 
-
+    def test_get_projects(self):
+        projects = Project.projects()
+        self.assertTrue(len(projects)>0)
