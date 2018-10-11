@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from tinymce.models import HTMLField
 
 class Profile(models.Model):
     name = models.CharField(max_length = 25, default = "Nancy Muthinzi")
