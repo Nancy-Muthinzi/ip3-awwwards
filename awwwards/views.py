@@ -2,10 +2,21 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from .models import Project
 from django.contrib.auth.decorators import login_required
-from .forms import NewProjectForm
+from .forms import NewProjectForm, NewsLetterForm
+from .email import send_welcome_email
 
 @login_required(login_url='/accounts/login/')
 def home(request):
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['your_name']
+            email = form.cleaned_data['email']
+
+            recipient = NewsLetterRecipients(name = name,email =email)
+            recipient.save()
+            send_welcome_email(name,email)
+
     
     return render(request, 'home.html')
 
