@@ -22,7 +22,8 @@ class Profile(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length = 25)
     post = models.TextField()
-    profile = models.ForeignKey(User, on_delete = models.CASCADE)
+    # profile = models.ForeignKey(User, on_delete = models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
     project_image = models.ImageField(upload_to = 'projects/', blank = True)
     pub_date = models.DateTimeField(auto_now_add = True)
 
