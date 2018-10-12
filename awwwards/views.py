@@ -4,10 +4,11 @@ from .models import Project
 from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm, NewsLetterForm
 from .email import send_welcome_email
-
+import datetime as dt
 
 @login_required(login_url='/accounts/login/')
 def home(request):
+    date = dt.date.today()
     if request.method == 'POST':
         form = NewsLetterForm(request.POST)
         if form.is_valid():
@@ -22,6 +23,11 @@ def home(request):
 
     return render(request, 'home.html')
 
+def convert_dates(dates):
+    day_number = dt.date.weekday(dates)
+    days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',"Sunday"]
+    day = days[day_number]
+    return day
 
 @login_required(login_url='/accounts/login/')
 def new_project(request):
@@ -38,3 +44,4 @@ def new_project(request):
     else:
         form = NewProjectForm()
     return render(request, 'new_project.html', {"form": form})
+

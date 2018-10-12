@@ -16,12 +16,11 @@
     }
 
     .topnav a {
-      float: left;
+      /* float: left; */
       color: #f2f2f2;
       text-align: center;
-      padding: 14px 16px;
       text-decoration: none;
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .topnav a:hover {
@@ -50,8 +49,7 @@
     .fa-instagram,
     .fa-twitter,
     .fa-facebook {
-      /* background: #3B5998; */
-      color: white;
+      color: lightgrey;
     }
 
     .social {
@@ -63,6 +61,8 @@
 <body>
 
   <div class="topnav">
+    <span style="font-size:30px;cursor:pointer;color:lightgrey" onclick="openNav()">&#9776;</span>
+
     <div class="social">
       <a href="#" class="fa fa-instagram"></a>
       <a href="#" class="fa fa-twitter"></a>
@@ -70,15 +70,34 @@
     </div>
   </div>
 
-  <div style="padding-left:16px">
-  </div>
-  <br>
   <div class="topnav">
-    <p style="text-align:center;"><img src="/static/images/awww.png"></p>
+    <div class="row">
+      <div class="col-md-2">
+          <form class="navbar-form" role="search" action="#">
+
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search Article" name="article">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </div>
+    
+            </form>
+      </div>
+      <div class="col-md-6"></div>
+      <div class="col-md-2">
+        <a href="/accounts/login">REGISTER/LOGIN</a>
+      </div>
+      <div class="col-md-2">
+        <a href="#">SUBMIT YOUR SITE</a>
+      </div>
+
+    </div>
+
+    <!-- <p style="text-align:center;"><img src="/static/images/awww.png" width="150px;"></p> -->
   </div>
 
-  <div style="padding-left:16px">
-  </div>
+
 
 </body>
 
