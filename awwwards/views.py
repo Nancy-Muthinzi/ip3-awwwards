@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from .models import Project
+from .models import Project, NewsLetterRecipients
 from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm, NewsLetterForm
 from .email import send_welcome_email
@@ -10,30 +10,35 @@ import datetime as dt
 @login_required(login_url='/accounts/login/')
 def home(request):
     date = dt.date.today()
-    day = convert_dates(date)
-    print('date')
-    print(date)
+    # projects = Project.objects.all()
+    form = NewsLetterForm()
 
-    # if request.method == 'POST':
-    #     form = NewsLetterForm(request.POST)
-    #     if form.is_valid():
-    #         name = form.cleaned_data['your_name']
-    #         email = form.cleaned_data['email']
+    return render(request, 'home.html', {"date": date, "letterForm":form})
 
-    #         recipient = NewsLetterRecipients(name=name, email=email)
-    #         recipient.save()
-    #         send_welcome_email(name, email)
+def search_results(request):
+    
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        searched_projects = Project.search_by_title(search_term)
 
-    return render(request, 'home.html', {"date": date})
+        message = f"{search_term}"
 
+        return render(request, 'search.html', {"message":message, "projects": searched_projects})
 
-def convert_dates(dates):
-    day_number = dt.date.weekday(dates)
-    days = ['Monday', 'Tuesday', 'Wednesday',
-            'Thursday', 'Friday', 'Saturday', "Sunday"]
-    day = days[day_number]
-    return day
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html', {"message":message})    
 
+@login_required(login_url='/accounts/login/')
+def project(request, article_id):
+    
+    try:
+        project = Project.objects.get(id = project_id)
+    
+    except DoesNotExist:
+        raise Http404()
+    
+    return render(request, "project.html", {"project":project})   
 
 @login_required(login_url='/accounts/login/')
 def new_project(request):
@@ -50,3 +55,13 @@ def new_project(request):
     else:
         form = NewProjectForm()
     return render(request, 'new_project.html', {"form": form})
+
+def newsletter(request):
+    name = request.POST.get('your_name')
+    email = request.POST.get('email')
+
+    recipient = NewsLetterRecipients(name=name, email=email)
+    recipient.save()
+    send_welcome_email(name, email)
+    data = {'success': 'You have been successfully added to mailing list'}
+    return JsonResponse(data)
