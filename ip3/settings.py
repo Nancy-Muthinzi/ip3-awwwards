@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'awwwards.apps.AwwwardsConfig',
     'bootstrap3',
+    'star_ratings',
     'tinymce',
     'django.contrib.admin',
     'django.contrib.auth',

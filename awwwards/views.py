@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from .models import Project, NewsLetterRecipients
+from .models import Project, Profile, Rate, NewsLetterRecipients
 from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm, NewsLetterForm
 from .email import send_welcome_email
@@ -10,7 +10,6 @@ import datetime as dt
 @login_required(login_url='/accounts/login/')
 def home(request):
     date = dt.date.today()
-    # projects = Project.objects.all()
     form = NewsLetterForm()
 
     return render(request, 'home.html', {"date": date, "letterForm":form})
