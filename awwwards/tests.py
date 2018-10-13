@@ -24,7 +24,6 @@ class ProjectTestClass(TestCase):
         self.nancy = Profile(name = 'Nancy', email = 'kathinimuthinzi@gmail.com')
         self.nancy.save_profile()
 
-    def setUp(self):
         self.new_project = Project(title = 'Test Project', post = 'This is a random test post', profile = self.nancy)
         self.new_project.save()  
 

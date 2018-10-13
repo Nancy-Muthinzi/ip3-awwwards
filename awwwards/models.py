@@ -38,11 +38,11 @@ class Profile(models.Model):
 
 
 class Project(models.Model):
-    title = models.CharField(max_length = 25)
-    post = models.TextField() 
+    title = models.CharField(max_length = 25) 
     description = models.TextField()
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     project_image = models.ImageField(upload_to = 'projects/', blank = True)
+    link = models.CharField(max_length=50, blank=True)
     pub_date = models.DateTimeField(auto_now_add = True)
 
     def save_project(self):
@@ -58,6 +58,7 @@ class Project(models.Model):
 
     @classmethod
     def projects(cls):
+        today = dt.date.today()
         awwwards = cls.objects.filter(title)
         return awwwards    
 

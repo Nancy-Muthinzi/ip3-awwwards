@@ -11,11 +11,20 @@ import datetime as dt
 def home(request):
     date = dt.date.today()
     form = NewsLetterForm()
+    projects = Project.objects.all()
 
-    return render(request, 'home.html', {"date": date, "letterForm":form})
+    return render(request, 'home.html', {"date": date, "letterForm":form, "project":projects})
 
-def search_results(request):
-    
+@login_required(login_url='/accounts/login/')
+def profile(request, id):
+    current_user = request.user
+    profiles = Profile.objects.get(user=current_user)
+    projects = Project.objects.all()
+    images = Image.objects.filter(user=current_user)
+
+    return render(request, 'profile.html', {'profile': profiles, "project":projects, "images": images})
+
+def search_results(request):    
     if 'project' in request.GET and request.GET["project"]:
         search_term = request.GET.get("project")
         searched_projects = Project.search_by_title(search_term)

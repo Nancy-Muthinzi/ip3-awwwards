@@ -10,6 +10,11 @@
       color: lightgrey;
     }
 
+    h1 {
+      font-size: 25px;
+      text-align: center;
+      color: 
+    }
     .topnav {
       overflow: hidden;
       background-color: #333;
@@ -56,6 +61,7 @@
       float: right;
       padding-right: 20px;
     }
+
     .navbar-form {
       text-align: right;
     }
@@ -64,47 +70,37 @@
 
 <body>
 
+  <!-- nav1 -->
   <div class="topnav">
 
-    <!-- menu -->
+    <!-- menu icon -->
     <span style="font-size:30px;cursor:pointer;color:lightgrey" onclick="openNav()">&#9776;</span>
 
-    <!-- logo -->
-    <p style="text-align:center; padding:0; margin:0"><img src="/static/images/1a.png" width="150px;"></p>
+    <h1>AWWWARDS</h1>
 
-    <form class="navbar-form" role="search" action="#">
+    <!-- <a style="font-size: 35px;" class="fa fa-user-o" href="{% url 'profile' user.id %}"></a> -->
+
+    <!-- <form class="navbar-form" role="search" action="#">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search..." name="article">
+          <input type="text" class="form-control" placeholder="Search...">
           <div class="input-group-btn">
             <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
           </div>
         </div>
-      </form>
-      <br>
+      </form> -->
+
     <div class="social">
-      <a href="#" class="fa fa-instagram"></a>
-      <a href="#" class="fa fa-twitter"></a>
-      <a href="#" class="fa fa-facebook"></a>
+      <a href="https://www.instagram.com/awwwards/" class="fa fa-instagram"></a>
+      <a href="https://twitter.com/awwwards" class="fa fa-twitter"></a>
+      <a href="https://web.facebook.com/awwwards/?_rdc=1&_rdr" class="fa fa-facebook"></a>
     </div>
   </div>
 
-  <div class="topnav">
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-6"></div>
-      <div class="col-md-2">
-        <a href="/accounts/login">REGISTER/LOGIN</a>
-      </div>
-      <div class="col-md-2">
-        <a href="#">SUBMIT YOUR SITE</a>
-      </div>
-
-    </div>
-
+  <!-- nav2 -->
+  <div class="topnav" style="text-align:right; padding-right:15px;">
+    <a href="/accounts/login" style="padding-right:20px;">REGISTER/LOGIN</a>
+    <a href="#">SUBMIT YOUR SITE</a>
   </div>
-
-
 
 </body>
-
 </html>

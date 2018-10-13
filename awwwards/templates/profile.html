@@ -3,19 +3,13 @@
 {% block content %}
 {{block.super}}
 
-<div class="container-fluid"><br>
-    <h2>{{ user.get_full_name }}</h2>
-    <ul>
-        <li>Username: {{ user.username }}</li>
-        <li>Location: {{ user.profile.location }}</li>
-        <li>Birth Date: {{ user.profile.birth_date }}</li>
-    </ul>
+<div class="container-fluid">
 
-    <form method="post">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <button type="submit">Save changes</button>
-    </form>
+    {% for post in profile %}
+
+    <img src="{{profile.profile_pic.url}}" width="200" style="border-radius:50%;">
+    <p>{{profile.username}}</p>
+    <p>{{profile.user.first_name}} {{profile.user.first_name}}</p>
+
 </div>
 {% endblock %}
