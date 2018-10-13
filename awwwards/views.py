@@ -37,6 +37,13 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'search.html', {"message":message})    
 
+def project(request,project_id):
+    try:
+        project = Project.objects.get(id = project_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"project.html", {"article":article})        
+
 @login_required(login_url='/accounts/login/')
 def project(request, article_id):
     

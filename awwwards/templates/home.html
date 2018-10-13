@@ -17,15 +17,13 @@
         </form>
     </div>
 
-    <div class="part2" style="background-color:#FF4F00;">
+    <div class="part2" style="background-color:lightgrey;">
         <h2>MY PROJECTS</h2>
         {% for post in project %}
 
-        <a href="{% url 'profile' post.user.id"> {{ project_item.user }}</a>
-
         <h4> {{ post.title }} </h4>
         <p> {{post.description }} </p>
-        <img src="{{ post.project_image.url}}"> <br>
+        <img src="{{ post.project_image.url}}" class="img-responsive" alt="Image" width="500" height="500px"> <br>
         <a> {{ post.link }}</a>
 
         {% endfor %}
