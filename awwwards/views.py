@@ -7,9 +7,6 @@ from .email import send_welcome_email
 import datetime as dt
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import  AwwwardsCriteria
-from .serializer import CriteriaSerializer
-
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -78,3 +75,4 @@ def newsletter(request):
     send_welcome_email(name, email)
     data = {'success': 'You have been successfully added to our mailing list'}
     return JsonResponse(data)
+

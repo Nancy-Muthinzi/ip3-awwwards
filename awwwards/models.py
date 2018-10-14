@@ -85,7 +85,3 @@ class NewsLetterRecipients(models.Model):
     name = models.CharField(max_length = 30)
     email = models.EmailField()
 
-class AwwwardsCriteria(models.Model):
-    design = models.CharField(max_length = 55)
-    usability = models.CharField(max_length = 55)
-    content = models.CharField(max_length = 55)
