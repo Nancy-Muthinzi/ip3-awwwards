@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'star_ratings',
     'tinymce',
+    'django_forms_bootstrap',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

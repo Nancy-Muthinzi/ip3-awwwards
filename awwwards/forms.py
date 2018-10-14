@@ -10,5 +10,5 @@ class NewProjectForm(forms.ModelForm):
         model = Project
         exclude = ['profile', 'pub_date']
         widgets = {
-            'like': forms.CheckboxSelectMultiple()
+            'like': forms.CheckboxSelectMultiple(),
         }    
