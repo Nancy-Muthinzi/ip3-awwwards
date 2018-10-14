@@ -17,6 +17,9 @@
     {% for project in projects %}
       <div class="col-sm-6 col-md-3">
           <h1>{{project.title}}</h1>
+          <h3>{{project.description}}</h3>
+          <img src="{{ project.project_image.url}}" class="img-responsive" alt="Image" width="500" height="500px"><br>
+                <a> {{ project.link }}</a>
       </div>
     {% endfor %}
   {% endif %}

@@ -1,4 +1,4 @@
-Hello {{}}
+Hello {{name}}
 
 Welcome to the Awwwards site.
 
