@@ -93,6 +93,7 @@
       <a href="https://web.facebook.com/awwwards/?_rdc=1&_rdr" class="fa fa-facebook"></a>
     </div><br>
 
+    {% if user.is_authenticated %}
     <ul>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
@@ -103,7 +104,7 @@
             <a href="{%url 'home'%}">Home</a>
           </li>
           <li>
-            <a href="{%url 'new-project'%}">Create Project</a>
+            <a href="{%url 'new-project'%}">Create Article</a>
           </li>
           <li>
             <a href="/accounts/password/change">Change Password</a>
@@ -114,10 +115,16 @@
         </ul>
       </li>
     </ul>
+    {% else %}
+    <li>
+      <a class='btn btn-default' href="/accounts/login">Login</a>
+    </li>
+
+    {% endif %}
 
 
     <a href="/accounts/login">REGISTER/LOGIN</a>
-    
+
   </div>
 
   </div>
