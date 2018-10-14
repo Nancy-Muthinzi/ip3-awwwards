@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'star_ratings',
     'registration',
     'tinymce',
+    'rest_framework',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django_forms_bootstrap',

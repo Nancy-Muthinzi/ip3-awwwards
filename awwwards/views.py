@@ -5,6 +5,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm, NewsLetterForm
 from .email import send_welcome_email
 import datetime as dt
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import  AwwwardsCriteria
+from .serializer import CriteriaSerializer
 
 
 @login_required(login_url='/accounts/login/')
