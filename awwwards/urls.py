@@ -9,7 +9,8 @@ urlpatterns = [
     url('^profile/(\d+)', views.profile, name='profile'),
     url(r'^new/project$', views.new_project, name='new-project'),
     url(r'^search/', views.search_results, name='search_results'),
-    url(r'^project/(\d+)',views.project,name ='project')
+    url(r'^project/(\d+)',views.project,name ='project'),
+    url(r'^ajax/newsletter/$', views.newsletter, name='newsletter')
 ]
 
 if settings.DEBUG:
