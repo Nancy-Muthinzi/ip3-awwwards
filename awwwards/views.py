@@ -7,6 +7,7 @@ from .email import send_welcome_email
 import datetime as dt
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from .serializer import ProfileSerializer, ProjectSerializer
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -76,3 +77,14 @@ def newsletter(request):
     data = {'success': 'You have been successfully added to our mailing list'}
     return JsonResponse(data)
 
+class ProfileInfo(APIView):
+    def get(self, request, format=None):
+        all_info = Profile.objects.all()
+        serializers = ProfileSerializer(all_info, many=True)
+        return Response(serializers.data)
+
+class ProjectInfo(APIView):
+    def get(self, request, format=None):
+        all_info = Project.objects.all()
+        serializers = ProjectSerializer(all_info, many=True)
+        return Response(serializers.data)        
