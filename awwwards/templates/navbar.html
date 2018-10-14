@@ -63,6 +63,10 @@
       padding-right: 20px;
     }
 
+    ul {
+      list-style-type: none;
+    }
+
     .navbar-form {
       text-align: right;
     }
@@ -77,6 +81,10 @@
     <!-- menu icon -->
     <span style="font-size:30px;cursor:pointer;color:lightgrey" onclick="openNav()">&#9776;</span>
 
+    <!-- <div class="navbar-header" style="text-align:center">
+      <a class="navbar-brand" href="{% url 'home' %}">AWWWARDS</a>
+    </div> -->
+
     <!-- <a style="font-size: 35px;" class="fa fa-user-o" href="{% url 'profile' user.id %}"></a> -->
 
     <div class="social">
@@ -86,26 +94,26 @@
     </div><br>
 
     <ul>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
-                    <span class="caret"></span>
-                </a>
-          <ul class="dropdown-menu" role="menu">
-            <li>
-              <a href="{%url 'home'%}">Home</a>
-            </li>
-            <li>
-              <a href="{%url 'new-project'%}">Create Article</a>
-            </li>
-            <li>
-              <a href="/accounts/password/change">Change Password</a>
-            </li>
-            <li>
-              <a href="/logout">Logout</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <a href="{%url 'home'%}">Home</a>
+          </li>
+          <li>
+            <a href="{%url 'new-project'%}">Create Article</a>
+          </li>
+          <li>
+            <a href="/accounts/password/change">Change Password</a>
+          </li>
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
 
     <a href="/accounts/login">REGISTER/LOGIN</a>
@@ -114,4 +122,5 @@
   </div>
 
 </body>
+
 </html>

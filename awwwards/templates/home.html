@@ -8,7 +8,7 @@
 
     <div class="part1" style="background-color:#00A88C;">
         <!-- <h2>HOME</h2> -->
-        <h1 style="text-align:right; color:lightgrey; font-size: 20px; padding-right: 20px;">{{date|date:"l d-F Y"}}</h1>
+        <h1 style="text-align:right; color:darkgrey; font-size: 20px; padding-right: 20px;">{{date|date:"l d-F Y"}}</h1>
         <hr>
 
         <p style="text-align:center;"><img src="/static/images/awww.png"></p>
@@ -61,3 +61,7 @@
     </div>
 </div>
 {%endblock%}
+
+{% block scripts %} {{block.super}}
+  <script type="text/javascript" src="{%static 'js/newsletter.js'%}"></script>
+{% endblock %}
