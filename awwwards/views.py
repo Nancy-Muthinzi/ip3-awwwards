@@ -93,10 +93,12 @@ class ProfileInfo(APIView):
 
     def post(self, request, format=None):
         serializers = ProfileSerializer(data=request.data)
+        permission_classes = (IsAdminOrReadOnly,)
+
         if serializers.is_valid():
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
-            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ProjectList(APIView):
@@ -113,3 +115,29 @@ class ProjectList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class InfoDescription(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get_info(self, pk):
+        try:
+            return ProfileInfo.objects.get(pk=pk)
+        except ProfileInfo.DoesNotExist:
+            return Http404
+
+    def get(self, request, pk, format=None):
+        info = self.get_info(pk)
+        serializers = ProjectSerializer(merch)
+        return Response(serializers.data)
+
+class ListDescription(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get_list(self, pk):
+        try:
+            return ProjectList.objects.get(pk=pk)
+        except ProjectList.DoesNotExist:
+            return Http404
+
+    def get(self, request, pk, format=None):
+        list = self.get_merch(pk)
+        serializers = ProjectList(merch)
+        return Response(serializers.data)

@@ -12,7 +12,11 @@ urlpatterns = [
     url(r'^project/(\d+)',views.project,name ='project'),
     url(r'^ajax/newsletter/$', views.newsletter, name='newsletter'),
     url(r'^api/info/$', views.ProfileInfo.as_view()),
-    url(r'^api/list/$', views.ProjectList.as_view())
+    url(r'^api/list/$', views.ProjectList.as_view()),
+    url(r'api/info/info-id/(?P<pk>[0-9]+)/$',
+        views.InfoDescription.as_view()),
+    url(r'api/list/list-id/(?P<pk>[0-9]+)/$',
+        views.ListDescription.as_view())    
 ]
 
 if settings.DEBUG:
