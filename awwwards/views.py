@@ -17,8 +17,9 @@ def home(request):
     date = dt.date.today()
     form = NewsLetterForm()
     projects = Project.objects.all()
+    profiles = Profile.objects.all()
 
-    return render(request, 'home.html', {"date": date, "letterForm": form, "project": projects})
+    return render(request, 'home.html', {"date": date, "letterForm": form, "project": projects, "profile":profiles})
 
 
 @login_required(login_url='/accounts/login/')
@@ -126,7 +127,7 @@ class ProfileDescription(APIView):
 
     def get(self, request, pk, format=None):
         profile = self.get_info(pk)
-        serializers = ProjectSerializer(merch)
+        serializers = ProfileSerializer(profile)
         return Response(serializers.data)
 
     def put(self, request, pk, format=None):
@@ -136,7 +137,12 @@ class ProfileDescription(APIView):
             serializers.save()
             return Response(serializers.data)
         else:
-            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)    
+            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)  
+
+    def delete(self, request, pk, format=None):
+        profile = self.get_profile(pk)
+        profile.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)      
 
 class ProjectDescription(APIView):
     permission_classes = (IsAdminOrReadOnly,)
@@ -147,8 +153,8 @@ class ProjectDescription(APIView):
             return Http404
 
     def get(self, request, pk, format=None):
-        project = self.get_merch(pk)
-        serializers = ProjectList(merch)
+        project = self.get_project(pk)
+        serializers = ProjectList(project)
         return Response(serializers.data)
 
     def put(self, request, pk, format=None):
@@ -159,3 +165,8 @@ class ProjectDescription(APIView):
             return Response(serializers.data)
         else:
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)    
+
+    def delete(self, request, pk, format=None):
+        project = self.get_project(pk)
+        project.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)        
