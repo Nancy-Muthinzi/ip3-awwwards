@@ -10,7 +10,9 @@ urlpatterns = [
     url(r'^new/project$', views.new_project, name='new-project'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^project/(\d+)',views.project,name ='project'),
-    url(r'^ajax/newsletter/$', views.newsletter, name='newsletter')
+    url(r'^ajax/newsletter/$', views.newsletter, name='newsletter'),
+    url(r'^api/info/$', views.ProfileInfo.as_view()),
+    url(r'^api/list/$', views.ProjectList.as_view())
 ]
 
 if settings.DEBUG:

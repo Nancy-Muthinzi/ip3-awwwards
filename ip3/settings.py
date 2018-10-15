@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'registration',
     'tinymce',
     'rest_framework',
+    'rest_framework.authtoken',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django_forms_bootstrap',
