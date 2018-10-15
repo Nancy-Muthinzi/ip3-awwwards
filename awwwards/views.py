@@ -27,9 +27,8 @@ def profile(request, id):
     current_user = request.user
     profiles = Profile.objects.get(user=current_user)
     projects = Project.objects.all()
-    images = Image.objects.filter(user=current_user)
 
-    return render(request, 'profile.html', {'profile': profiles, "project": projects, "images": images})
+    return render(request, 'profile.html', {'profile': profiles, "project": projects})
 
 
 def search_results(request):
