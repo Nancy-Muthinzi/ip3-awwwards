@@ -1,11 +1,17 @@
 * {
-  font-family: 'Caveat Brush', cursive;
+  font-family: "Audiowide", cursive;
   color: black;
+  text-align: center;
 }
 
 h2 {
-  font-size: 30px;
-}
-p,a  {
   font-size: 20px;
+}
+
+p {
+  font-size: 15px;
+}
+
+a {
+  font-size: 12px;
 }
