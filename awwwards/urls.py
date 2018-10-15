@@ -7,7 +7,7 @@ urlpatterns = [
     url('^$', views.home, name = 'home'),
     url('^today/$',views.home,name='siteToday'),
     url('^profile/(\d+)', views.profile, name='profile'),
-    url(r'^new/project$', views.new_project, name='new-project'),
+    url(r'^new/', views.new_project, name='new-project'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^project/(\d+)',views.project,name ='project'),
     url(r'^ajax/newsletter/$', views.newsletter, name='newsletter'),
@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^api/list/$', views.ProjectList.as_view()),
     url(r'api/profile/profile-id/(?P<pk>[0-9]+)/$',
         views.ProfileDescription.as_view()),
-    url(r'api/project/lprojectist-id/(?P<pk>[0-9]+)/$',
+    url(r'api/project/project-id/(?P<pk>[0-9]+)/$',
         views.ProjectDescription.as_view())    
 ]
 
