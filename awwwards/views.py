@@ -6,8 +6,9 @@ from .forms import NewProjectForm, NewsLetterForm
 from .email import send_welcome_email
 import datetime as dt
 from rest_framework.response import Response
-from rest_framework.views import APIView, status
+from rest_framework.views import APIView
 from .serializer import ProfileSerializer, ProjectSerializer
+from rest_framework import status
 
 
 @login_required(login_url='/accounts/login/')
@@ -104,8 +105,8 @@ class ProjectList(APIView):
         return Response(serializers.data)
 
     def post(self, request, format=None):
-        serializers = ProfileSerializer(data=request.data)
+        serializers = ProjectSerializer(data=request.data)
         if serializers.is_valid():
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
-            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -35,14 +35,16 @@
 
     </div>
 
-    <div class="part2" style="background-color:#FF4F00; padding-left:20px;">
+    <div class="part2" style="background-color:#00A88C; padding-left:20px;">
         <h2>MY PROJECTS</h2>
         <div class="row">
             {% for post in project %}
             <div class="col-md-6">
                 <h4> {{ post.title }} </h4>
                 <p> {{post.description }} </p>
+                {% if post.project_image. %}
                 <img src="{{ post.project_image.url}}" class="img-responsive" alt="Image" width="500" height="500px"><br>
+                {% endif %}
                 <a> {{ post.link }}</a>
                 <hr>
             </div>
@@ -50,7 +52,7 @@
         </div>
     </div>
 
-    <div class="part5" style="background-color:#FF4F00;">
+    <div class="part5" style="background-color:#00A88C;">
         <h2>NOMINEES</h2>
     </div>
 
@@ -66,7 +68,7 @@
         </div>
     </div>
 
-    <div class="part5" style="background-color:#FF4F00;">
+    <div class="part5" style="background-color:#00A88C;">
         <h2>CONTACT INFO</h2>
 
     </div>
